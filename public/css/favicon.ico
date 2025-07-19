@@ -1,0 +1,1 @@
+app.get('/favicon.ico', (req, res) => res.status(204)); // Returns "no content"

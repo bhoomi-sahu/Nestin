@@ -1,0 +1,160 @@
+<style>
+  .search-btn {
+    background-color: brown;
+    color: white;
+    border-radius: 25px;
+    padding: 0 1rem 0 1rem;
+  }
+
+  .search-btn:hover {
+    background-color: brown;
+    color: white;
+  }
+
+  .search-btn i {
+    display: inline;
+    margin-right: 0.5rem;
+  }
+
+  .search-inp {
+    border-radius: 25px;
+  }
+
+ /* Page background and text */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/* Navbar styling */
+.navbar.dark-mode {
+  background-color: #1f1f1f !important;
+  border-bottom: 1px solid #333;
+}
+
+.navbar.dark-mode .nav-link,
+.navbar.dark-mode .navbar-brand {
+  color: #f1f1f1 !important;
+}
+
+.navbar.dark-mode .nav-link:hover {
+  color: #ffffff !important;
+}
+
+/* Card styling */
+.card.dark-mode {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  border: 1px solid #444;
+}
+
+/* Button outline styling */
+.btn-outline-dark.dark-mode {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.btn-outline-dark.dark-mode:hover {
+  background-color: #ffffff;
+  color: #121212;
+}
+
+/* Optional: Dark mode for form inputs */
+input.form-control.dark-mode,
+textarea.form-control.dark-mode {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  border-color: #444;
+}
+
+</style>
+
+<nav class="navbar navbar-expand-md navbar-light bg-light border-bottom sticky-top" id="mainNavbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings">Nestin</a>
+      </div>
+
+      <!-- ✅ SEARCH FORM -->
+      <div class="navbar-nav ms-auto">
+        <form class="d-flex" action="/listings/search" method="GET" role="search" style="position: relative;">
+          <input
+            class="form-control me-2 search-inp"
+            type="search"
+            name="q"
+            id="searchInput"
+            placeholder="Search by country, state or city"
+            autocomplete="off"
+            required
+          />
+          <button class="btn search-btn" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>Search
+          </button>
+        </form>
+      </div>
+
+      <!-- ✅ Right-side nav -->
+      <div class="navbar-nav ms-auto align-items-center">
+        <a class="nav-link" href="/listings/new">Add new Listings</a>
+        <% if (!currUser) { %>
+          <a class="nav-link" href="/signup"><b>Sign Up</b></a>
+          <a class="nav-link" href="/login"><b>Log in</b></a>
+        <% } else { %>
+          <a class="nav-link" href="/logout"><b>Log out</b></a>
+        <% } %>
+
+        <!-- 🌙 Dark Mode Toggle -->
+        <button id="darkToggle" class="btn btn-sm btn-outline-dark ms-3">
+          🌙 Dark Mode
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ✅ Dark Mode JS Script -->
+<script>
+  const darkBtn = document.getElementById("darkToggle");
+  const body = document.body;
+  const navbar = document.getElementById("mainNavbar");
+
+  darkBtn.addEventListener("click", () => {
+    body.classList.toggle("dark-mode");
+    navbar.classList.toggle("dark-mode");
+
+    // Optional: Change button text/icon
+    if (darkBtn.innerText.includes("Dark")) {
+      darkBtn.innerText = "☀️ Light Mode";
+    } else {
+      darkBtn.innerText = "🌙 Dark Mode";
+    }
+
+    // Optional: Save preference
+    const isDark = body.classList.contains("dark-mode");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  });
+
+  // On load: apply saved theme
+  window.addEventListener("load", () => {
+    const saved = localStorage.getItem("theme");
+    if (saved === "dark") {
+      body.classList.add("dark-mode");
+      navbar.classList.add("dark-mode");
+      darkBtn.innerText = "☀️ Light Mode";
+    }
+  });
+</script>

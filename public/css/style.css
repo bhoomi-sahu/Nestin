@@ -1,0 +1,170 @@
+@import url('https://unpkg.com/leaflet/dist/leaflet.css');
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container{
+    flex: 1;
+}
+
+
+/* Navbar */
+.navbar {
+    height: 5rem;
+    background-color: white;
+}
+
+.fa-compass {
+    color:rgb(203, 83, 4);
+    font-size: 2rem;
+}
+
+.nav-link {
+    color: #222222 !important;
+}
+
+    /* Footer */
+.f-info-links a {
+    text-decoration: none;
+    color: #222222;
+    }
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+
+.f-info-links ,
+.f-info-socials, 
+.f-info-brand{ 
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-info-socials i {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+
+}
+
+
+
+.f-info {
+    text-align: center;
+    height:8rem;
+background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+/* card */
+.card {
+border: none !important;
+margin-bottom: 2rem;
+}
+
+.card-img-top {
+    border-radius: 1 rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body {
+    padding: 0 !important;
+}
+
+.card-text p {
+    font-weight: 400;
+}
+
+.listing-link{
+    text-decoration: none;
+}
+
+
+/*Card hover*/
+
+.card-img-overlay {
+    opacity: 0;
+}
+
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: black;
+}
+
+/* new page*/
+
+.add-btn:hover {
+    background-color: rgb(142, 102, 102) !important;
+    color: rgb(151, 22, 22) !important;
+}
+
+
+/* edit btn */
+.edit-btn{
+    background-color: darkgreen !important;
+    border: none !important;
+}
+
+/* show page */
+.show-img {
+    height: 10vh;
+    width: 20vh;
+}
+
+.btns {
+    display: flex;
+}
+
+/*.show-card{
+    padding-left : 0;
+    padding-right: 0;
+}*/
+
+.show-card {
+    box-shadow: 0 0 10px rgba(0, 128, 0, 0.5); /* green glow */
+    border-top: 5px solid red;
+    border-bottom: 5px solid green;
+  }
+  /* Validation Styles */
+input:invalid, textarea:invalid, select:invalid {
+    border: 2px solid red;
+}
+
+input:valid, textarea:valid, select:valid {
+    border: 2px solid green;
+}
+
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 85vh;
+  overflow: hidden;
+  background-color: blue;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(70%); 
+  background-color: blue;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(255, 255, 255);
+  padding: 0 1rem;
+}
+
